@@ -3,6 +3,7 @@ package com.nach.prueba.vo;
 import java.io.Serializable;
 import java.sql.Date;
 
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
 public class hrsTrbjVO implements Serializable {
@@ -11,8 +12,10 @@ public class hrsTrbjVO implements Serializable {
 	@NotNull(message = "Este valor no debe ser nulo")
 	private int employee_id;
 	@NotNull(message = "Este valor no debe ser nulo")
+	@NotEmpty(message = "Este valor no debe ser vacio")
 	private Date start_date;
 	@NotNull(message = "Este valor no debe ser nulo")
+	@NotEmpty(message = "Este valor no debe ser vacio")
 	private Date end_date;
 	public hrsTrbjVO() {
 		super();

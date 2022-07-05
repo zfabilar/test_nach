@@ -9,6 +9,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.nach.prueba.components.Constantes;
 import com.nach.prueba.components.IutilsComponent;
 import com.nach.prueba.dao.empleadoDAO;
 import com.nach.prueba.dao.generoDAO;
@@ -43,6 +44,8 @@ public class empleadoServImpl implements empleadoServ {
 	private hrsTrbjEmplDAO hrswork_dao;
 	@Autowired
 	private IutilsComponent utils;
+	@Autowired
+	private Constantes constantes;
 	
 	@Override
 	public agregarEmpleadoDTO agregaEmpleado(agregarEmpleadoVO empleado) {
@@ -58,20 +61,20 @@ public class empleadoServImpl implements empleadoServ {
 						// return new agregarEmpleadoDTO(0,true);
 						 return new agregarEmpleadoDTO(employee.getId(),true);
 					 }else {
-						 log.info("No existe el puesto");
-						 return new agregarEmpleadoDTO(false,"No existe el puesto");
+						 log.info(constantes.NO_EXISTE_PUESTO);
+						 return new agregarEmpleadoDTO(false,constantes.NO_EXISTE_PUESTO);
 					 }
 				 }else {
-					log.info("No existe el genero");
-					 return new agregarEmpleadoDTO(false,"No existe el genero");
+					log.info(constantes.NO_EXISTE_GENERO);
+					 return new agregarEmpleadoDTO(false,constantes.NO_EXISTE_GENERO);
 				 }
 			 }else {
-				 log.info("No es mayor de edad");
-				 return new agregarEmpleadoDTO(false,"No es mayor de edad");
+				 log.info(constantes.NO_MAYOR_EDAD);
+				 return new agregarEmpleadoDTO(false,constantes.NO_MAYOR_EDAD);
 			 }
 		}else {
-			log.info("Ya existe empleado");
-			 return new agregarEmpleadoDTO(false,"Ya existe empleado");
+			log.info(constantes.YA_EXISTE_EMPLEADO);
+			 return new agregarEmpleadoDTO(false,constantes.YA_EXISTE_EMPLEADO);
 		}
 	}
 	@Override
@@ -85,20 +88,20 @@ public class empleadoServImpl implements empleadoServ {
 					  log.info("Horas registradas");
 					  return new agregarEmpleadoDTO(hrs.getId(),true);
 					}else {
-						log.info("El empleado ya tiene registro en esa fecha");
-						return new agregarEmpleadoDTO(false,"El empleado ya tiene registro en esa fecha");
+						log.info(constantes.YA_EXISTE_REGISTRO_FECHA);
+						return new agregarEmpleadoDTO(false,constantes.YA_EXISTE_REGISTRO_FECHA);
 					}
 				 }else {
-					 log.info("La fecha no es correcta");
-					 return new agregarEmpleadoDTO(false,"La fecha no es correcta");
+					 log.info(constantes.FECHA_INCORRECTA);
+					 return new agregarEmpleadoDTO(false,constantes.FECHA_INCORRECTA);
 				 }
 			}else {
-				log.info("Las horas no son correctas");
-				 return new agregarEmpleadoDTO(false,"Horas trabajadas incorrectas");
+				log.info(constantes.HORAS_INCORRECTAS);
+				 return new agregarEmpleadoDTO(false,constantes.HORAS_INCORRECTAS);
 			}
 		}else {
-			log.info("No existe empleado");
-			 return new agregarEmpleadoDTO(false,"No existe el empleado");
+			log.info(constantes.NO_EXISTE_EMPLEADO);
+			 return new agregarEmpleadoDTO(false, constantes.NO_EXISTE_EMPLEADO);
 		}
 	}
 	@Override

@@ -2,16 +2,15 @@ package com.nach.prueba.vo;
 
 import java.io.Serializable;
 import java.sql.Date;
-
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 
 
-public class agregaHrsTrbjVO implements Serializable{
 
+public class agregaHrsTrbjVO implements Serializable{
 	private static final long serialVersionUID = -1607620071440662027L;
-	@NotNull(message = "Este valor no debe ser nulo")
+	@NotNull(message = "{NOT.NULL}")
 	private int employee_id;
 	@Min(1)
 	@Max(20)
